@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Promp</title>
+
+</head>
+<body>
+  <p>Klik tombol "Klik Disini", Lalu masukan Nama Anda Maka akan menampilkan "Halo (Nama Anda)"</p>
+  <button onclick="Halo()">Klik Disini</button>
+</body>
+<script>
+  const Halo = () => {
+
+    let nama = prompt("Masukan Nama Anda :", "")
+
+    if (nama !== null) {
+      alert("Halo " + nama);
+      console.log("Halo " + nama);
+    } else {
+      alert("Halo Teman");
+      console.log("Halo Teman");
+    }
+  }
+</script>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rumah Sakit</title>
+
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    .title {
+      text-align: center;
+      margin-top: 30px;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .input {
+      width: 60%;
+    }
+
+    label {
+      font-weight: 600;
+    }
+
+    .formInput {
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+      margin-top: 10px;
+    }
+
+    input,
+    select {
+      line-height: 1.2rem;
+    }
+
+    #save {
+      margin-top: 10px;
+      line-height: 1.2rem;
+      background-color: aqua;
+      border-radius: 5px;
+      width: 100%;
+      padding: 3px;
+      border: #000000a1;
+      cursor: pointer;
+    }
+
+    .list {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      margin-top: 30px;
+      margin-bottom: 30px;
+    }
+
+    .table {
+      width: 80%;
+    }
+
+    .tableHead {
+      background-color: aqua;
+    }
+
+    textarea {
+      line-height: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">Rumah Sakit Mulia Abadi</h1>
+
+  <div class="container">
+    <form action="" class="input">
+      <div class="formInput">
+        <label for="idPasien">Id Pasien</label>
+        <input type="text" id="idPasien" name="idPasien" required>
+      </div>
+      
+      <div class="formInput">
+        <label for="namaPasien">Nama Pasien</label>
+        <input type="text" id="namaPasien" name="namaPasien" required>
+      </div>
+      
+      <div class="formInput">
+        <label for="alamat">Alamat</label>
+        <textarea id="alamat" name="alamat" required></textarea>
+      </div>
+      
+      <div class="formInput">
+        <label for="penyakit">Penyakit</label>
+        <input type="text" id="penyakit" name="penyakit" required>
+      </div>
+      
+      <div class="formInput">
+        <label for="nomorRuang">Nomor Ruang</label>
+        <input type="text" id="nomorRuang" name="nomorRuang" required>
+      </div>
+      
+      <div class="formInput">
+        <label for="bpjs">BPJS</label>
+        <select id="bpjs" name="bpjs">
+          <option value="Tidak Menggunakan">Tidak Menggunakan</option>
+          <option value="Kelas I">Kelas I</option>
+          <option value="Kelas II">Kelas II</option>
+          <option value="Kelas II">Kelas III</option>
+        </select>
+      </div>
+      
+      <div class="formInput">
+        <label for="tglMasuk">Tanggal Masuk</label>
+        <input type="date" id="tglMasuk" name="tglMasuk" required>
+      </div>
+      
+      <div class="formInput">
+        <label for="tglKeluar">Tanggal Keluar</label>
+        <input type="date" id="tglKeluar" name="tglKeluar" required>
+      </div>
+
+      <button type="button" id="save"><b>Simpan</b></button>
+    </form>
+  </div>
+
+  <div class="list">
+    <table class="table" style="border-radius: 5px;" border="1">
+      <thead class="tableHead">
+        <tr>
+          <th>Id Pasien</th>
+          <th>Nama Pasien</th>
+          <th>Alamat</th>
+          <th>Penyakit</th>
+          <th>Nomor Ruang</th>
+          <th>BPJS</th>
+          <th>Tgl Masuk</th>
+          <th>Tgl Keluar</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+      <tbody id="tableBody">
+
+      </tbody>
+    </table>
+  </div>
+</body>
+<script>
+  const sessionStorageKey = "secretKey";
+
+  if (typeof(Storage) !== 'undefined') {
+      const save = document.getElementById("save");
+      const tableBody = document.getElementById("tableBody");
+      
+      // Load existing data from sessionStorage
+      tableBody.innerHTML = sessionStorage.getItem(sessionStorageKey);
+
+      save.addEventListener("click", () => {
+        const idPasien = document.getElementById("idPasien").value;
+        const namaPasien = document.getElementById("namaPasien").value;
+        const alamat = document.getElementById("alamat").value;
+        const penyakit = document.getElementById("penyakit").value;
+        const nomorRuang = document.getElementById("nomorRuang").value;
+        const bpjs = document.getElementById("bpjs").value;
+        const tglMasuk = document.getElementById("tglMasuk").value;
+        const tglKeluar = document.getElementById("tglKeluar").value;
+
+        const newRow = document.createElement("tr");
+        newRow.innerHTML = `
+          <td>${idPasien}</td>
+          <td>${namaPasien}</td>
+          <td>${alamat}</td>
+          <td>${penyakit}</td>
+          <td>${nomorRuang}</td>
+          <td>${bpjs}</td>
+          <td>${tglMasuk}</td>
+          <td>${tglKeluar}</td>
+        `;
+
+        tableBody.appendChild(newRow);
+
+        sessionStorage.setItem(sessionStorageKey, tableBody.innerHTML);
+
+        document.getElementById("idPasien").value = "";
+        document.getElementById("namaPasien").value = "";
+        document.getElementById("alamat").value = "";
+        document.getElementById("penyakit").value = "";
+        document.getElementById("nomorRuang").value = "";
+        document.getElementById("bpjs").value = "Tidak Menggunakan";
+        document.getElementById("tglMasuk").value = "";
+        document.getElementById("tglKeluar").value = "";
+      });
+  }
+</script>
+</html>

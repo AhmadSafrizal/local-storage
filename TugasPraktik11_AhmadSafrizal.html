@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produk</title>
+
+  <style>
+   * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      margin-top: 40px;
+      gap: 20px;
+    }
+
+    .cardInput,
+    .cardResult {
+      width: 400px;
+      border: 1px solid #00000083;
+    }
+    
+    .inputHeader,
+    .resultHeader {
+      background-color: #9b9b9b;
+      padding: 10px;
+    }
+    
+    .inputForm {
+      padding: 10px;
+    }
+
+    .data {
+      width: 100%;
+      margin-top: 5px;
+      line-height: 1.2rem;
+    }
+
+    .inputForm > button {
+      padding: 2px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    .listDataContainer {
+      padding: 10px;
+    }
+
+    #listData > li {
+      margin-left: 30px;
+    }
+
+    .clear {
+      margin-top: 10px;
+      border: #0000008a;
+      background-color: red;
+      padding: 4px;
+      border-radius: 2px;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="cardInput">
+      <div class="inputHeader">
+        <h3>Input To Do List:</h3>
+      </div>
+      <form class="inputForm">
+        <p>Masukan Data</p>
+        <input type="text" id="data" class="data" />
+        <button id="save">Submit</button>
+      </form>
+    </div>
+    
+    <div class="cardResult">
+      <div class="resultHeader">
+        <h3>Daftar To Do List:</h3>
+      </div>
+      <div class="listDataContainer">
+        <ol id="listData">
+
+        </ol>
+
+        <button class="clear" id="clear">Hapus</button>
+      </div>
+    </div>
+  </div>
+</body>
+<script type="text/javascript">
+
+  const sessionStorageKey = "secretKey";
+
+  if (typeof(Storage) !== 'undefined') {
+    const save = document.getElementById("save");
+    const listData = document.getElementById("listData");
+    const clear = document.getElementById("clear");
+    
+    listData.innerHTML = sessionStorage.getItem(sessionStorageKey);
+
+    save.addEventListener("click", () => {
+      const dataInput = document.getElementById("data").value;
+
+      if (dataInput.trim() !== "") {
+        const newListItem = document.createElement("li");
+        newListItem.textContent = dataInput;
+
+        listData.appendChild(newListItem);
+
+        sessionStorage.setItem(sessionStorageKey, listData.innerHTML);
+
+        document.getElementById("data").value = "";
+      }
+    });
+
+    clear.addEventListener("click", () => {
+      sessionStorage.removeItem(sessionStorageKey);
+      listData.innerHTML = "";
+    })
+  }
+</script>
+</html>

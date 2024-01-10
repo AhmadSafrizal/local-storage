@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Form</title>
+</head>
+<body>
+  <h1 align="center">Form Pendaftaran Siswa Baru</h1>
+  <center>
+    <video width="640" height="360" controls>
+      <source src="https://www.example.com/path/to/your/video.mp4" type="video/mp4">
+    </video>
+    <canvas width="640" height="360" id="canvas" style="border:1px solid #000">
+
+    </canvas>
+  </center>
+  <form>
+    <label for="name">Nama Lengkap</label><br>
+    <input type="text" name="name" id="name"><br>
+    
+    <label for="tempat_lahir">Tempat Lahir</label><br>
+    <input type="text" name="tempat_lahir" id="tempat_lahir"><br>
+    
+    <label for="tanggal_lahir">Tempat Lahir</label><br>
+    <input type="date" name="tanggal_lahir" id="tanggal_lahir"><br>
+    
+    <label>Jenis Kelamin</label><br>
+    <input type="radio" name="gender" id="male" value="Laki-Laki">
+    <label for="male">Laki-Laki</label>
+    <input type="radio" name="gender" id="female" value="Perempuan">
+    <label for="female">Perempuan</label>
+    <br>
+
+    <label for="alamat">Alamat</label><br>
+    <textarea name="alamat" id="alamat">
+      
+    </textarea>
+    <br>
+
+    <label for="email">Email</label><br>
+    <input type="email" name="email" id="email"><br>
+    
+    <label for="kota">Kota</label><br>
+    <select id="kota" name="kota">
+      <option value="Semarang">Semarang</option>
+      <option value="Salatiga">Salatiga</option>
+      <option value="Solo">Solo</option>
+      <option value="Boyolali">Boyolali</option>
+    </select>
+    <br>
+    <br>
+
+    <button type="submit">Simpan</button>
+
+  </form>
+</body>
+<script>
+  let canvas = document.getElementById("canvas");
+  let text = canvas.getContext("2d");
+  text.font = "58px Text New Roman";
+  text.strokeText("Pendaftaran", 250, 250);
+</script>
+</html>

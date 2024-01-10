@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Css</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: aquamarine;
+      height: 100vh;
+      max-width: 100vw;
+    }
+
+    .nav-container {
+      background-color: azure;
+      position: fixed;
+      width: 100%;
+      height: 40px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .menu {
+      display: flex;
+      list-style-type: none;
+    }
+
+    .menu > li {
+      margin-right: 15px;
+    }
+
+    .home {
+      background-color: bisque;
+      height: 100%;
+    }
+    
+    .profile {
+      background-color: black;
+      height: 100%;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="nav-container">
+    <div class="nav">
+      <h2 class="logo">
+        Logo
+      </h2>
+      <div>
+        <ul class="menu">
+          <li>Home</li>
+          <li>Profile</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="home">
+
+  </div>
+
+  <div class="profile">
+
+  </div>
+</body>
+</html>

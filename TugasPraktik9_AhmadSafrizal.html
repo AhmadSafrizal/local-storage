@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DOM</title>
+
+  <style>
+    /* .title {
+      text-align: center;
+      font-size: 3rem;
+    } */
+  </style>
+</head>
+<body>
+  <h1 id="title">Perkenalan Diri</h1>
+
+  <div class="nama">
+    <p id="p-nama">Nama Saya : Ahmad Safrizal</p>
+  </div>
+
+  <div id="status">
+    <p id="p-status"></p>
+  </div>
+  
+</body>
+<script type="text/javascript">
+  const title = document.getElementById("title");
+  title.style.textAlign = "center"
+  title.style.fontSize = "3rem"
+  
+  // Nama
+  const pNama = document.getElementById("p-nama");
+  pNama.style.backgroundColor = "red";
+  pNama.style.color = "white";
+  pNama.style.lineHeight = "2rem";
+  
+  // status
+  const status = document.getElementById("status");
+  status.style.backgroundColor = "black";
+  status.style.lineHeight = "2rem";
+  status.style.color = "white";
+
+  // p-status
+  const pStatus = document.getElementById("p-status");
+  pStatus.innerText = "Status: Lajang";
+  
+  const paragraf = document.createElement("p");
+  paragraf.textContent = "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Ad commodi mollitia minus reprehenderit quis quidem quam nisi, ab molestias, fugiat beatae, neque soluta. Recusandae nesciunt atque voluptatum cumque fuga vero."
+  document.body.append(paragraf);
+</script>
+</html>

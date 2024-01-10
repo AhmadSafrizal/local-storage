@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produk</title>
+
+  <style>
+   * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      padding: 10px;
+    }
+
+    .title {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .container {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      text-align: center;
+    }
+
+    .produk {
+      display: inline-block;
+      margin: 0 10px 20px;
+      border: 1px solid #00000031;
+      width: 200px;
+      height: 230px;
+      padding: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      border-radius: 5%;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 5%;
+    }
+
+    h3 {
+      margin-top: 5px;
+      font-size: 2rem;
+    }
+
+    h3, h6 {
+      text-align: center;
+      color: chocolate;
+    }
+
+    div {
+      text-align: center;
+    }
+
+    button {
+      margin-top: 5px;
+      padding: 5px;
+      background-color: chocolate;
+      color: azure;
+      border-radius: 10%;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h1 class="title">Daftar Produk</h1>
+
+  <ul class="container">
+    <li class="produk">
+      <img src="https://source.unsplash.com/600x400/?clothing" alt="Produk 1" />
+      <h3 class="nama">Baju</h3>
+      <h6 class="harga">Rp. 35.000</h6>
+      <div>
+        <button onclick="produk1()">Detail</button>
+      </div>
+    </li>
+
+    <li class="produk">
+      <img src="https://source.unsplash.com/600x400/?clothing" alt="Produk 1" />
+      <h3 class="nama">Celana</h3>
+      <h6 class="harga">Rp. 45.000</h6>
+      <div>
+        <button onclick="produk2()">Detail</button>
+      </div>
+    </li>
+
+    <li class="produk">
+      <img src="https://source.unsplash.com/600x400/?clothing" alt="Produk 1" />
+      <h3 class="nama">Kemeja</h3>
+      <h6 class="harga">Rp. 90.000</h6>
+      <div>
+        <button onclick="produk3()">Detail</button>
+      </div>
+    </li>
+
+    <li class="produk">
+      <img src="https://source.unsplash.com/600x400/?clothing" alt="Produk 1" />
+      <h3 class="nama">T-Shirt</h3>
+      <h6 class="harga">Rp. 25.000</h6>
+      <div>
+        <button onclick="produk4()">Detail</button>
+      </div>
+    </li>
+  </ul>
+</body>
+<script type="text/javascript">
+  let currentElement = null;
+
+  const clearElement = () => {
+    if (currentElement) {
+      currentElement.remove();
+    }
+  };
+
+  const showProductDetail = (productName, color) => {
+    const h2 = document.createElement("h2");
+    h2.textContent = `Ini adalah ${productName}`;
+    h2.style.textAlign = "center";
+    h2.style.color = color;
+    h2.style.fontSize = "3rem";
+    h2.className = "detail";
+
+    clearElement();
+    currentElement = h2;
+
+    document.body.append(h2);
+  };
+
+  const produk1 = () => {
+    showProductDetail("produk 1", "red");
+  };
+
+  const produk2 = () => {
+    showProductDetail("produk 2", "black");
+  };
+
+  const produk3 = () => {
+    showProductDetail("produk 3", "blue");
+  };
+
+  const produk4 = () => {
+    showProductDetail("produk 4", "yellow");
+  };
+</script>
+</html>
